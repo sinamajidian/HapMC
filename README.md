@@ -17,4 +17,4 @@ Submitted to PLOS ONE, 2018
 
 ``first_block_extractor.m`` is used within the matlab code, HapMC, for extracting overlaped reads which are considered as a connected read block.
 
-The `` HapMC.m `` is the core of algorithm. The input of this code is a matrix of matlab. The output will be three haplotype fles, named as ``chr1_opt.hap``, ``chr1_svt.hap``, ``chr1_nuc.hap``and .
+The `` HapMC.m `` is the core of algorithm. The input of this code is a matrix of matlab. The output will be three haplotype fles, named as ``chr1_opt.hap``, ``chr1_svt.hap``, and  ``chr1_nuc.hap``.
