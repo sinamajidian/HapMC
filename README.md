@@ -15,7 +15,7 @@ Submitted to PLOS ONE, 2018
 
 
 
-INPUT
+##Input
 
 
 
@@ -49,7 +49,7 @@ matlab -r 'HapMC(fragment_file,Hap_algorithm)';
 Hap_algorithm can be either 'O', 'S' or 'N' correspond to 'HapOPT', 'HapSVT' or 'HapNuc'  respectively,
 
 
-output
+##output
 
 
 ```
@@ -63,8 +63,7 @@ Block
 
 
 
-TEST USE
-
+#Test use
 
 ```
 git clone https://github.com/smajidian/HapMC.git
