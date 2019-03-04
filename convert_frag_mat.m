@@ -1,5 +1,5 @@
 
-function [R]=convert_frag_mat(fragment_file,SNP_Numbers)
+function [R]=convert_frag_mat(fragment_file)
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11,7 +11,8 @@ function [R]=convert_frag_mat(fragment_file,SNP_Numbers)
 
 
 % a sample fragment file
-% Header
+% 2         % Number of reads  % we dont use this line, the first line  is discarded by readtable() 
+% 200       % Number of columns 
 % 1 NC_001133.9_1-318 166 0000101001 AIGGGGDIII
 % 1 NC_001133.9_2-288 166 0000010000 ?HHHEGFGHI
 
@@ -25,14 +26,13 @@ function [R]=convert_frag_mat(fragment_file,SNP_Numbers)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-l=SNP_Numbers;          % number of SNPs i.e. haplotype length
-
-%fid = fopen(input_filename);
+%fid = fopen(fragment_file);
 %file = textscan(fid,'%s','delimiter','\n');
 
-a1=readtable(fragment_file,'Delimiter','\t'); %the first line is ignored
-
-fragment_cell=table2cell(a1);  % each row of the file is an element of cell
+full_table=readtable(fragment_file,'Delimiter','\t'); %the first line is ignored
+full_cell=table2cell(full_table); 
+l=str2double(full_cell{2});       % number of SNPs i.e. haplotype length
+fragment_cell =full_cell(3:end); % removing two first line (number of read and number of snps=haplotype length )
 N=size(fragment_cell,1);   % the number of reads i.e. row in fragment file
 R=sparse(N,l); % the final read matrix
 
@@ -80,5 +80,5 @@ for i=1:N % index for each row of the cell (file)
 end
 
 
-clearvars -except R  fragment_cell adress_prefx  pipname
-save(strcat(adress_prefx,pipname,'.mat'),'-v7.3')
+clearvars -except R  fragment_cell
+save('R.mat','-v7.3')

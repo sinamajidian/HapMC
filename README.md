@@ -19,14 +19,19 @@ Submitted to PLOS ONE, 2018
 
 
 
-Our developed program works with the fragment file in which each line is with the following format:
+Our developed program works with the fragment file used in [AltHap](https://github.com/realabolfazl/AltHap) and SDhaP  in which each line is with the following format:
+
 
 ```
+Number of reads
+Number of columns 
 "Number of parts" "Read ID"  "index of the first allele of the 1st part"  "Alleles of 1st part"  "index of first allele of 2nd part"  "Alleles of 2nd part" ... "Quality scores of alleles of all parts  " 
 ```
 
 An example of fragment file:
 ```
+3
+9
 1 chr1_1 1 010 @@@@@
 2 chr1_2 3 011 7 010 @@@@@@ 
 1 chr1_2 1 01 7 010 @@@@@@ 
@@ -44,7 +49,7 @@ This works for diploids, if you want to use it for polyploids, artificially conv
 
 ## Output
 
-
+The output of algorithm is a text file named as `Reconstructed_Haplotype.txt`.
 ```
 Block
 1 0 1
@@ -57,18 +62,19 @@ Block
 
 
 ```
-matlab -r 'HapMC(fragment_file,Hap_algorithm)';
+matlab -r "HapMC(fragment_file,Hap_algorithm)"
 ```
 Hap_algorithm can be either 'O', 'S' or 'N' correspond to 'HapOPT', 'HapSVT' or 'HapNuc'  respectively,
 
 
 
 ## Test use
+Here, we can test the example of paper in Table 2.
 
 ```
 git clone https://github.com/smajidian/HapMC.git
 cd HapMC
-matlab -r 'HapMC('data/fragment_sample.txt','O')';
+matlab -r "HapMC('data/fragment_sample.txt','O');exit";
 cat Reconstructed_Haplotype.txt
 
 ```

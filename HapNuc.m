@@ -19,7 +19,7 @@ function h=HapNuc(R_used,k)
 omega=find(R_used);
 [N, l] = size(R_used);
 
-cvx_begin quiet
+cvx_begin %quiet
 variable X(N,l)
 minimize norm_nuc(X)
 subject to

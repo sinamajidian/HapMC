@@ -23,7 +23,8 @@ function h=HapSVT(R_used,k)
 
 %%%%%%%% haplotpying  using SVT
 omega=find(R_used);
-[U, S, V, numiter]= SVT(size(R_used),omega,R_used(omega),.001);%FPC(n,Omega,b,mu_final,maxiter,tol)
+[U, S, V, ~]= FPC(size(R_used),omega,R_used(omega),.001);%FPC(n,Omega,b,mu_final,maxiter,tol)
+% FPC is the version of SVT whic tolerate the noise.
 X1=U*S*V';
 [u_sv,S_sv,v_sv]=svds(X1,1);
 
