@@ -41,13 +41,6 @@ When you have a Bam and VCF files, we suggest you to use [ExtractHAIRS](https://
 ```
 This works for diploids, if you want to use it for polyploids, artificially convert the genotypes (GP tags) to a "0/1" using `sed`.
 
-You can set the argument in order to set which algorithm you want to run.
-
-```
-matlab -r 'HapMC(fragment_file,Hap_algorithm)';
-```
-Hap_algorithm can be either 'O', 'S' or 'N' correspond to 'HapOPT', 'HapSVT' or 'HapNuc'  respectively,
-
 
 ## Output
 
@@ -60,8 +53,17 @@ Block
 ````
 
 
+# How to use
 
-# Test use
+
+```
+matlab -r 'HapMC(fragment_file,Hap_algorithm)';
+```
+Hap_algorithm can be either 'O', 'S' or 'N' correspond to 'HapOPT', 'HapSVT' or 'HapNuc'  respectively,
+
+
+
+## Test use
 
 ```
 git clone https://github.com/smajidian/HapMC.git
