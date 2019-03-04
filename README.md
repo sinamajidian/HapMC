@@ -4,7 +4,7 @@
 
 We apply matrix completion methods for haplotype assembly from NGS reads to develop the new HapSVT, HapNuc, and HapOPT algorithms.
 
-CITE
+## Cite
 
 ```
 
@@ -15,7 +15,7 @@ Submitted to PLOS ONE, 2018
 
 
 
-##Input
+## Input
 
 
 
@@ -49,7 +49,7 @@ matlab -r 'HapMC(fragment_file,Hap_algorithm)';
 Hap_algorithm can be either 'O', 'S' or 'N' correspond to 'HapOPT', 'HapSVT' or 'HapNuc'  respectively,
 
 
-##output
+## Output
 
 
 ```
@@ -61,9 +61,7 @@ Block
 
 
 
-
-
-#Test use
+# Test use
 
 ```
 git clone https://github.com/smajidian/HapMC.git
@@ -72,7 +70,6 @@ matlab -r 'HapMC('data/fragment_sample.txt','O')';
 cat Reconstructed_Haplotype.txt
 
 ```
-
 
 
 
