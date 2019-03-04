@@ -1,5 +1,6 @@
-close all
-clearvars
+
+function [R]=convert_frag_mat(fragment_file,SNP_Numbers)
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%Converting a fragment file (ProbHAP) to sparse matrix
@@ -22,14 +23,14 @@ clearvars
 %Sina Majidian Dec 2018
 %Iran University of Science and Technology
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-adress_prefx='/SinaMc/code1new/fosmid/fragments/chr';
-% adress_prefx='/SinaMc/code1new/Ashkenazim/HG00';
-pipname='3'; 
-
-l=117657;          % number of SNPs i.e. haplotype length
 
 
-a1=readtable(strcat(adress_prefx,pipname,'.txt'),'Delimiter','\t'); %the first line is ignored
+l=SNP_Numbers;          % number of SNPs i.e. haplotype length
+
+%fid = fopen(input_filename);
+%file = textscan(fid,'%s','delimiter','\n');
+
+a1=readtable(fragment_file,'Delimiter','\t'); %the first line is ignored
 
 fragment_cell=table2cell(a1);  % each row of the file is an element of cell
 N=size(fragment_cell,1);   % the number of reads i.e. row in fragment file

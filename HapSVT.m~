@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Haplotyping using HapSVT
+%
+% Input: Read matrix correspond  read matrix in .mat format
+% algorithm canbe either 'HapOPT' or 'HapSVT' or 'HapNuc'.
+% output: a text file containg haplotypes and corresponding variant index
+%?he longest block is considered 2000
+%
+%
+%Sina Majidian Dec 2018
+%Iran University of Science and Technology
+%
+%
+%
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+function h=HapSVT(R_used,k)
+
+% one block of overlapped reads
+
+
+
+
+%%%%%%%% haplotpying  using SVT
+omega=find(R_used);
+[U, S, V, numiter]= SVT(size(R_used),omega,R_used(omega),.001);%FPC(n,Omega,b,mu_final,maxiter,tol)
+X1=U*S*V';
+[u_sv,S_sv,v_sv]=svds(X1,1);
+
+X_svt=u_sv*S_sv*v_sv';
+[~,colind] = rref(X_svt);
+Xsub = X_svt(:, colind(1:k));
+h=Xsub'>0;
+
