@@ -4,13 +4,11 @@
 
 We apply matrix completion methods for haplotype assembly from NGS reads to develop the new HapSVT, HapNuc, and HapOPT algorithms.
 
-## Cite
+## Cite us
 
 ```
-
 Sina Majidian, Mohammad Hossein Kahaei, "NGS based haplotype assembly using matrix completion",
 Submitted to PLOS ONE, 2018
-
 ```
 
 
@@ -35,12 +33,11 @@ An example of fragment file:
 1 chr1_1 1 010 @@@@@
 2 chr1_2 3 011 7 010 @@@@@@ 
 1 chr1_2 1 01 7 010 @@@@@@ 
-
 ```
 
 
 When you have a Bam and VCF files, we suggest you to use [ExtractHAIRS](https://github.com/vibansal/HapCUT2).
- 
+
 ```
 ./extractHAIRS  --bam reads.sorted.bam --VCF variants.VCF --out fragment.txt
 ```
@@ -76,7 +73,6 @@ git clone https://github.com/smajidian/HapMC.git
 cd HapMC
 matlab -r "HapMC('data/fragment_sample.txt','O');exit";
 cat Reconstructed_Haplotype.txt
-
 ```
 
 
