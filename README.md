@@ -15,9 +15,7 @@ Submitted to PLOS ONE, 2018
 
 ## Input
 
-
-
-Our developed program works with the fragment file used in [AltHap](https://github.com/realabolfazl/AltHap) and SDhaP  in which each line is with the following format:
+Our developed program works with the fragment file used in [AltHap](https://github.com/realabolfazl/AltHap) and SDhaP  with the following format:
 
 
 ```
@@ -25,6 +23,7 @@ Number of reads
 Number of columns 
 "Number of parts" "Read ID"  "index of the first allele of the 1st part"  "Alleles of 1st part"  "index of first allele of 2nd part"  "Alleles of 2nd part" ... "Quality scores of alleles of all parts  " 
 ```
+The last line is repeated for each (paired/mate/singel) read. It is noted that out algorithm can also work with 10x data. I this case each line corresponds to each barcode.
 
 An example of fragment file:
 ```
@@ -36,7 +35,7 @@ An example of fragment file:
 ```
 
 
-When you have a Bam and VCF files, we suggest you to use [ExtractHAIRS](https://github.com/vibansal/HapCUT2).
+When you have a Bam and VCF files, we suggest you to use [ExtractHAIRS](https://github.com/vibansal/HapCUT2) to create a fragment file.
 
 ```
 ./extractHAIRS  --bam reads.sorted.bam --VCF variants.VCF --out fragment.txt
@@ -46,14 +45,14 @@ This works for diploids, if you want to use it for polyploids, artificially conv
 
 ## Output
 
-The output of algorithm is a text file named as `Reconstructed_Haplotype.txt`.
+The output of algorithm is a text file named as `Reconstructed_Haplotype.txt`. For the all-heterzygous case 
 ```
-Block
-1 0 1
-2 1 0
-3 0 1
+Block 1 3  
+1 0
+2 1
+3 0
 ````
-
+in which first column is the index of variant in VCF file and the second column is the allele at that SNP. It is obvious that another haplotype can be found by flipping this.  For the case where heterzygous and homozygous variants exists the output file contains three column.
 
 # How to use
 
@@ -66,19 +65,23 @@ Hap_algorithm can be either 'O', 'S' or 'N' correspond to 'HapOPT', 'HapSVT' or 
 
 
 ## Test use
-Here, we can test the example of paper in Table 2.
+Here, we can test the example of paper in Table 2. Run this lines in Terminal!
 
 ```
 git clone https://github.com/smajidian/HapMC.git
 cd HapMC
-matlab -r "HapMC('data/fragment_sample.txt','O');exit";
+matlab -r "HapMC('data/fragment_sample.txt','O');exit"; #if it is not in bash /Applications/MATLAB_R2018b.app/bin/matlab 
 cat Reconstructed_Haplotype.txt
 ```
 
 
 
-``convert_frag_mat.m`` can be used for converting a fragment file in hapcut format to a matrix of MATLAB format with .mat extension.
+``convert_frag_mat.m`` can be used for converting a fragment file  to a matrix of MATLAB format with .mat extension.
 
 ``first_block_extractor.m`` is used within the matlab code, HapMC, for extracting overlaped reads which are considered as a connected read block.
 
-The `` HapMC.m `` is the core of algorithm. The input of this code is a matrix of matlab. The output will be three haplotype fles, named as ``chr1_opt.hap``, ``chr1_svt.hap``, and  ``chr1_nuc.hap``.
+The `` HapMC.m `` is the core of algorithm. 
+For converting the matrix file of the simulated data, one can use the R code.
+For comparison we can use compare.py. To convert the output to a more standard format, on can use the convert_hapcut.py.
+
+
