@@ -9,7 +9,7 @@ Sina Majidian, Mohammad Hossein Kahaei, "NGS based haplotype assembly using matr
 ```
 
 ## Input
-Our developed program works with the fragment file used in AltHap and SDhaP with the following format:
+Our developed program works with the fragment file used in [AltHap](https://github.com/realabolfazl/AltHap) and SDhaP with the following format:
 ```
 Number of reads
 Number of columns 
@@ -24,7 +24,7 @@ An example of fragment file:
 2 chr_2 3 011 7 010 @@@@@@ 
 1 chr_3 1 01 7 010 @@@@@@ 
 ```
-When you have Bam and VCF files, we suggest to use ExtractHAIRS as the following command-line:
+When you have Bam and VCF files, we suggest to use [ExtractHAIRS](https://github.com/vibansal/HapCUT2/) as the following command-line:
 ```
 extractHAIRS --bam reads.sorted.bam --VCF variants.VCF --out fragment.txt
 ```
@@ -48,9 +48,9 @@ One can run the MATLAB code using the following command-line:
 ```
 matlab -r "HapMC(fragment_file,Hap_algorithm)"
 ```
-Hap_algorithm can be either 'O', 'S' or 'N' corresponding to 'HapOPT', 'HapSVT' or 'HapNuc', respectively,
+`Hap_algorithm` can be either 'O', 'S' or 'N' corresponding to 'HapOPT', 'HapSVT' or 'HapNuc', respectively,
 
-Test use
+## Test use
 Here, we can easily test the example described in Table 2 of our paper. The input file is provided in the data folder.
 ```
 git clone https://github.com/smajidian/HapMC.git
@@ -59,9 +59,9 @@ matlab -r "HapMC('data/fragment_sample.txt','O');exit";
 cat Reconstructed_Haplotype.txt
 ```
 ## File description
-The MATLAB code convert_frag_mat.m can be used to convert a fragment file to a matrix of MATLAB format with .mat extension. first_block_extractor.m is used within the MATLAB code, HapMC.m, to extract overlapped reads which are considered as a connected read block. To convert the text file of the simulated data, we used two codes in R programming language:
+The MATLAB code `convert_frag_mat.m` can be used to convert a fragment file to a matrix of MATLAB format with `.mat` extension. `first_block_extractor.m` is used within the MATLAB code, `HapMC.m`, to extract overlapped reads which are considered as a connected read block. To convert the text file of the simulated data, we used two codes in R programming language:
 
-convert_simulated_data_to_mat-hap.R and convert_simulated_data_to_mat-read.R. 
+`convert_simulated_data_to_mat-hap.R` and `convert_simulated_data_to_mat-read.R`. 
 
-To convert the HapOPT’s output to HapCUT format, one can use convert_hapcut.py.
+To convert the HapOPT’s output to HapCUT format, one can use `convert_hapcut.py`.
 
