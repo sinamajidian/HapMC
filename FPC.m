@@ -26,6 +26,7 @@ function [U,S,V,numiter]  = FPC(n,Omega,b,mu_final,maxiter,tol)
 % code by Stephen Becker, srbecker@caltech.edu, March 2009
 
 % May 2009: adding support for complex matrices
+% Downloaded at 1/3/2019 from publicly available code http://svt.stanford.edu/code/SVT_MostRecent.zip
 
 
 % -- some parameters:
