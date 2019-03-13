@@ -65,3 +65,11 @@ The MATLAB code `convert_frag_mat.m` can be used to convert a fragment file to a
 
 To convert the HapOPT’s output to HapCUT format, one can use `convert_hapcut.py`.
 
+The zip file `Simulated_data.mat.zip` contain 8 `.mat` files correspond to the error rate of 10 and 20 percent. Each file contains 100 read matrices and 100 exact haplotypes. For extracting each read matrix from each `jj=1:100` file, one can use:
+
+```
+NumberRowsofMatrix=NumberRowsofMatrix(:,2);
+NumRow=[0;cumsum(NumberRowsofMatrix)];
+R=ReadMatrixe0(NumRow(jj)+1:NumRow(jj+1),:);
+H_ex=Haplotypese0([2*jj,2*jj-1],:);
+```
