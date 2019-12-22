@@ -4,9 +4,9 @@
 We apply matrix completion methods for haplotype assembly from NGS reads to develop the new HapSVT, HapNuc, and HapOPT algorithms.
 
 ## Cite us
-```
-Sina Majidian, Mohammad Hossein Kahaei, "NGS based haplotype assembly using matrix completion", Submitted to PLOS ONE, 2018
-```
+
+Majidian S, Kahaei MH. [NGS based haplotype assembly using matrix completion](https://doi.org/10.1371/journal.pone.0214455). PloS one. 2019 Mar 26;14(3):e0214455.
+
 
 ## Input
 Our developed program works with the fragment file used in [AltHap](https://github.com/realabolfazl/AltHap) and SDhaP with the following format:
